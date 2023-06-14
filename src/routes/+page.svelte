@@ -29,6 +29,9 @@
 </section>
 
 <style lang="postcss">
+	:global(html) {
+		/*background-color: theme(colors.red.100);*/
+	}
 	section {
 		display: flex;
 		flex-direction: column;

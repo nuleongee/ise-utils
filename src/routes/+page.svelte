@@ -1,31 +1,42 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import SveltyPicker from 'svelty-picker';
+
+	let myDate = '00:00';
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>🍳 금요일 퇴근시간 계산기</title>
+	<meta name="description" content="🍦아이스크림에듀 퇴근시간 계산기" />
 </svelte:head>
 
 <section>
-	<h1 class="text-3xl font-bold underline">
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
+	<!--	<h1 class="text-3xl font-bold underline">-->
+	<!--		<span class="welcome">-->
+	<!--			<picture>-->
+	<!--				<source srcset={welcome} type="image/webp" />-->
+	<!--				<img src={welcome_fallback} alt="Welcome" />-->
+	<!--			</picture>-->
+	<!--		</span>-->
 
-		to your new<br />SvelteKit app
-	</h1>
+	<!--		to your new<br />SvelteKit app-->
+	<!--	</h1>-->
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
+	<!--	<h2>-->
+	<!--		try editing <strong>src/routes/+page.svelte</strong>-->
+	<!--	</h2>-->
 
-	<Counter />
+	<!--	<Counter />-->
+	<span>
+		<a href="https://ehr.i-screamedu.co.kr" target="_blank" rel="noreferrer noopener">e-HR의 총근로시간 입력</a>
+		<input type="number" />
+	</span>
+	<br />
+	<span>
+		<a href="https://ehr.i-screamedu.co.kr" target="_blank" rel="noreferrer noopener">e-HR의 출근기록 입력</a>
+		<SveltyPicker inputClasses="form-control" format="hh:ii" bind:value={myDate} />
+	</span>
+	<br />
+	<span>00시 00분 퇴근! 👋</span>
 </section>
 
 <style lang="postcss">
@@ -42,14 +53,6 @@
 
 	h1 {
 		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
 	}
 
 	.welcome img {

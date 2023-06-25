@@ -1,18 +1,18 @@
 <script>
-	import Header from './Header.svelte';
 	import './styles.css';
 	import '../app.css';
 </script>
 
 <div class="app">
-	<Header />
+	<!--	<Header />-->
+	<header>🍳 금요일 퇴근시간 계산기</header>
 
 	<main>
 		<slot />
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p>Nuleongee's ISE Utils</p>
 	</footer>
 </div>
 
@@ -20,7 +20,15 @@
 	.app {
 		display: flex;
 		flex-direction: column;
-		min-height: 100vh;
+		min-height: 100dvh;
+	}
+
+	header {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: center;
+		margin-top: 2rem;
+		font-size: 3rem;
 	}
 
 	main {
@@ -42,7 +50,7 @@
 		padding: 12px;
 	}
 
-	footer a {
+	footer {
 		font-weight: bold;
 	}
 

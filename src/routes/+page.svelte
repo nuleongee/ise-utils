@@ -7,6 +7,9 @@
 <svelte:head>
 	<title>🍳 금요일 퇴근시간 계산기</title>
 	<meta name="description" content="🍦아이스크림에듀 퇴근시간 계산기" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet" />
 </svelte:head>
 
 <section>

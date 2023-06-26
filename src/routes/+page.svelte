@@ -2,6 +2,27 @@
 	import SveltyPicker from 'svelty-picker';
 
 	let myDate = '00:00';
+
+	let totalTimeData = '00:00',
+		totalTimeChange,
+		totalTimeBlur;
+
+	console.log(totalTimeData);
+
+	$: {
+		let number = totalTimeData.replace(/\s|[^0-9]/g, '');
+		console.log(number);
+	}
+
+	totalTimeChange = () => {
+		let number = totalTimeData.replace(/\s|[^0-9]{4}/g, '');
+
+		totalTimeData = number.slice(0, 2) + number.slice(2, 4);
+	};
+
+	totalTimeBlur = () => {
+		totalTimeData = totalTimeData.slice(0, 2) + ':' + totalTimeData.slice(2, 4);
+	};
 </script>
 
 <svelte:head>
@@ -31,12 +52,18 @@
 	<!--	<Counter />-->
 	<span>
 		<a href="https://ehr.i-screamedu.co.kr" target="_blank" rel="noreferrer noopener">e-HR의 총근로시간 입력</a>
-		<input type="number" />
+		<input
+			on:input={totalTimeChange}
+			on:blur={totalTimeBlur}
+			bind:value={totalTimeData}
+			type="text"
+			pattern="[0-3][0-9]:[0-5][0-9]"
+		/>
 	</span>
 	<br />
 	<span>
 		<a href="https://ehr.i-screamedu.co.kr" target="_blank" rel="noreferrer noopener">e-HR의 출근기록 입력</a>
-		<SveltyPicker inputClasses="form-control" format="hh:ii" bind:value={myDate} />
+		<SveltyPicker mode="time" format="hh:ii" bind:value={myDate} />
 	</span>
 	<br />
 	<span>00시 00분 퇴근! 👋</span>
@@ -44,7 +71,6 @@
 
 <style lang="postcss">
 	:global(html) {
-		/*background-color: theme(colors.red.100);*/
 	}
 	section {
 		display: flex;

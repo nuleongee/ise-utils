@@ -1,28 +1,50 @@
 <script>
-	import SveltyPicker from 'svelty-picker';
+	let workTimeAmount = '',
+		arrivalTime = '';
 
-	let myDate = '00:00';
+	function handleWorkTimeInput(event) {
+		let formattedTime = event.target.value;
 
-	let totalTimeData = '00:00',
-		totalTimeChange,
-		totalTimeBlur;
+		// Remove any non-numeric characters from the input value
+		formattedTime = formattedTime.replace(/\D/g, '');
 
-	console.log(totalTimeData);
+		// Format the time as "hh:mm"
+		if (formattedTime.length > 0) {
+			formattedTime = formattedTime.replace(/(\d{2})(\d{2})/, '$1:$2');
+			formattedTime = formattedTime.slice(0, 5);
+		}
 
-	$: {
-		let number = totalTimeData.replace(/\s|[^0-9]/g, '');
-		console.log(number);
+		workTimeAmount = formattedTime;
 	}
 
-	totalTimeChange = () => {
-		let number = totalTimeData.replace(/\s|[^0-9]{4}/g, '');
+	$: if (workTimeAmount.length === 5) {
+		let hours = Math.min(parseInt(workTimeAmount.split(':')[0]), 49);
+		let minutes = Math.min(Number(workTimeAmount.split(':')[1]), 59);
 
-		totalTimeData = number.slice(0, 2) + number.slice(2, 4);
-	};
+		workTimeAmount = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
+	}
 
-	totalTimeBlur = () => {
-		totalTimeData = totalTimeData.slice(0, 2) + ':' + totalTimeData.slice(2, 4);
-	};
+	function handleArrivalTimeInput(event) {
+		let formattedTime = event.target.value;
+
+		// Remove any non-numeric characters from the input value
+		formattedTime = formattedTime.replace(/\D/g, '');
+
+		// Format the time as "hh:mm"
+		if (formattedTime.length > 0) {
+			formattedTime = formattedTime.replace(/(\d{2})(\d{2})/, '$1:$2');
+			formattedTime = formattedTime.slice(0, 5);
+		}
+
+		arrivalTime = formattedTime;
+	}
+
+	$: if (arrivalTime.length === 5) {
+		let hours = Math.min(parseInt(arrivalTime.split(':')[0]), 10);
+		let minutes = Math.min(Number(arrivalTime.split(':')[1]), 59);
+
+		arrivalTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
+	}
 </script>
 
 <svelte:head>
@@ -34,36 +56,14 @@
 </svelte:head>
 
 <section>
-	<!--	<h1 class="text-3xl font-bold underline">-->
-	<!--		<span class="welcome">-->
-	<!--			<picture>-->
-	<!--				<source srcset={welcome} type="image/webp" />-->
-	<!--				<img src={welcome_fallback} alt="Welcome" />-->
-	<!--			</picture>-->
-	<!--		</span>-->
-
-	<!--		to your new<br />SvelteKit app-->
-	<!--	</h1>-->
-
-	<!--	<h2>-->
-	<!--		try editing <strong>src/routes/+page.svelte</strong>-->
-	<!--	</h2>-->
-
-	<!--	<Counter />-->
 	<span>
 		<a href="https://ehr.i-screamedu.co.kr" target="_blank" rel="noreferrer noopener">e-HR의 총근로시간 입력</a>
-		<input
-			on:input={totalTimeChange}
-			on:blur={totalTimeBlur}
-			bind:value={totalTimeData}
-			type="text"
-			pattern="[0-3][0-9]:[0-5][0-9]"
-		/>
+		<input type="text" bind:value={workTimeAmount} on:input={handleWorkTimeInput} placeholder="00:00" />
 	</span>
 	<br />
 	<span>
 		<a href="https://ehr.i-screamedu.co.kr" target="_blank" rel="noreferrer noopener">e-HR의 출근기록 입력</a>
-		<SveltyPicker mode="time" format="hh:ii" bind:value={myDate} />
+		<input type="text" bind:value={arrivalTime} on:input={handleArrivalTimeInput} placeholder="00:00" />
 	</span>
 	<br />
 	<span>00시 00분 퇴근! 👋</span>

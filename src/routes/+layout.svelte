@@ -5,7 +5,9 @@
 
 <div class="app">
 	<!--	<Header />-->
-	<header>🍳 금요일 퇴근시간 계산기</header>
+	<a href="https://ehr.i-screamedu.co.kr" target="_blank" rel="noreferrer noopener">
+		<header>🍳 금요일 퇴근시간 계산기</header>
+	</a>
 
 	<main>
 		<slot />

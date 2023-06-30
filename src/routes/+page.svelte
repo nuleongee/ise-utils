@@ -1,15 +1,15 @@
 <script>
+	import dayjs from 'dayjs';
+
 	let workTimeAmount = '',
 		arrivalTime = '',
-		quittingTime = '';
+		quittingTime;
 
 	function handleWorkTimeInput(event) {
 		let formattedTime = event.target.value;
 
-		// Remove any non-numeric characters from the input value
 		formattedTime = formattedTime.replace(/\D/g, '');
 
-		// Format the time as "hh:mm"
 		if (formattedTime.length > 0) {
 			formattedTime = formattedTime.replace(/(\d{2})(\d{2})/, '$1:$2');
 			formattedTime = formattedTime.slice(0, 5);
@@ -28,10 +28,8 @@
 	function handleArrivalTimeInput(event) {
 		let formattedTime = event.target.value;
 
-		// Remove any non-numeric characters from the input value
 		formattedTime = formattedTime.replace(/\D/g, '');
 
-		// Format the time as "hh:mm"
 		if (formattedTime.length > 0) {
 			formattedTime = formattedTime.replace(/(\d{2})(\d{2})/, '$1:$2');
 			formattedTime = formattedTime.slice(0, 5);
@@ -41,23 +39,32 @@
 	}
 
 	$: if (arrivalTime.length === 5) {
-		let hours = Math.min(parseInt(arrivalTime.split(':')[0]), 10);
+		let hours = Math.min(parseInt(arrivalTime.split(':')[0]), 11);
 		let minutes = Math.min(Number(arrivalTime.split(':')[1]), 59);
 
 		arrivalTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
 	}
 
 	$: {
-		let goalHours = 50;
-		let goalMinutes = 0;
-
 		let workTimeHours = parseInt(workTimeAmount.split(':')[0]);
 		let workTimeMinutes = parseInt(workTimeAmount.split(':')[1]);
 
 		let arrivalTimeHours = parseInt(arrivalTime.split(':')[0]);
 		let arrivalTimeMinutes = parseInt(arrivalTime.split(':')[1]);
 
-		let quittingTimeHours = goalHours - workTimeHours;
+		let baseTime = dayjs().startOf('week').add(5, 'day');
+
+		quittingTime = baseTime
+			.add(51 - workTimeHours, 'hour')
+			.subtract(workTimeMinutes, 'minute')
+			.add(arrivalTimeHours, 'hour')
+			.add(arrivalTimeMinutes, 'minute');
+
+		let minQuittingTime = baseTime.add(16, 'hour');
+
+		if (quittingTime < minQuittingTime) {
+			quittingTime = minQuittingTime;
+		}
 	}
 </script>
 
@@ -71,16 +78,24 @@
 
 <section>
 	<span>
-		<a href="https://ehr.i-screamedu.co.kr" target="_blank" rel="noreferrer noopener">e-HR의 총근로시간 입력</a>
-		<input type="text" bind:value={workTimeAmount} on:input={handleWorkTimeInput} placeholder="00:00" />
+		<label for="workTime">e-HR의 총근로시간 입력</label>
+		<input id="workTime" type="text" bind:value={workTimeAmount} on:input={handleWorkTimeInput} placeholder="00:00" />
 	</span>
 	<br />
 	<span>
-		<a href="https://ehr.i-screamedu.co.kr" target="_blank" rel="noreferrer noopener">e-HR의 출근기록 입력</a>
-		<input type="text" bind:value={arrivalTime} on:input={handleArrivalTimeInput} placeholder="00:00" />
+		<label for="arrivalTime">e-HR의 출근기록 입력</label>
+		<input
+			id="arrivalTime"
+			type="text"
+			bind:value={arrivalTime}
+			on:input={handleArrivalTimeInput}
+			placeholder="00:00"
+		/>
 	</span>
 	<br />
-	<span>00시 00분 퇴근! 👋</span>
+	{#if Number.isInteger(quittingTime.hour()) && Number.isInteger(quittingTime.minute())}
+		<span>{quittingTime.hour() - 12}시 {quittingTime.minute().toString().padStart(2, '0')}분 퇴근! 👋</span>
+	{/if}
 </section>
 
 <style lang="postcss">

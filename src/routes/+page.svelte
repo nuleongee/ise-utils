@@ -1,6 +1,7 @@
 <script>
 	let workTimeAmount = '',
-		arrivalTime = '';
+		arrivalTime = '',
+		quittingTime = '';
 
 	function handleWorkTimeInput(event) {
 		let formattedTime = event.target.value;
@@ -44,6 +45,19 @@
 		let minutes = Math.min(Number(arrivalTime.split(':')[1]), 59);
 
 		arrivalTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
+	}
+
+	$: {
+		let goalHours = 50;
+		let goalMinutes = 0;
+
+		let workTimeHours = parseInt(workTimeAmount.split(':')[0]);
+		let workTimeMinutes = parseInt(workTimeAmount.split(':')[1]);
+
+		let arrivalTimeHours = parseInt(arrivalTime.split(':')[0]);
+		let arrivalTimeMinutes = parseInt(arrivalTime.split(':')[1]);
+
+		let quittingTimeHours = goalHours - workTimeHours;
 	}
 </script>
 

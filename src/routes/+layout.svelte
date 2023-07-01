@@ -22,7 +22,7 @@
 	.app {
 		display: flex;
 		flex-direction: column;
-		min-height: 100dvh;
+		height: 100dvh;
 	}
 
 	header {
@@ -30,14 +30,14 @@
 		flex-flow: row nowrap;
 		justify-content: center;
 		margin-top: 2rem;
-		font-size: 3rem;
+		font-size: clamp(1.5rem, 10dvw, 3.5rem);
 	}
 
 	main {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding: 1rem;
+		padding: 1rem 0;
 		width: 100%;
 		max-width: 64rem;
 		margin: 0 auto;

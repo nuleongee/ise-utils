@@ -90,7 +90,7 @@
 	</span>
 	<br />
 	<span>
-		<label for="arrivalTime">e-HR의 출근기록 입력</label>
+		<label for="arrivalTime">&nbsp;&nbsp;&nbsp;e-HR의 출근기록 입력</label>
 		<input
 			id="arrivalTime"
 			type="text"
@@ -117,6 +117,24 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
+		font-size: clamp(0.94rem, 4.3dvw, 1.6rem);
+	}
+
+	section > span {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: center;
+		width: 90dvw;
+	}
+
+	label {
+		text-align: right;
+		max-width: 40dvw;
+		min-width: 18dvw;
+		padding-right: 2dvw;
+	}
+	input {
+		min-width: 18dvw;
 	}
 
 	h1 {

@@ -3,7 +3,8 @@
 
 	let workTimeAmount = '',
 		arrivalTime = '',
-		quittingTime;
+		quittingTime,
+		error;
 
 	function handleWorkTimeInput(event) {
 		let formattedTime = event.target.value;
@@ -19,7 +20,7 @@
 	}
 
 	$: if (workTimeAmount.length === 5) {
-		let hours = Math.min(parseInt(workTimeAmount.split(':')[0]), 49);
+		let hours = Math.max(Math.min(parseInt(workTimeAmount.split(':')[0]), 49), 37);
 		let minutes = Math.min(Number(workTimeAmount.split(':')[1]), 59);
 
 		workTimeAmount = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
@@ -48,6 +49,12 @@
 	$: {
 		let workTimeHours = parseInt(workTimeAmount.split(':')[0]);
 		let workTimeMinutes = parseInt(workTimeAmount.split(':')[1]);
+
+		if (workTimeHours < 37) {
+			error = 'workTimeError';
+		} else {
+			error = '';
+		}
 
 		let arrivalTimeHours = parseInt(arrivalTime.split(':')[0]);
 		let arrivalTimeMinutes = parseInt(arrivalTime.split(':')[1]);
@@ -93,7 +100,10 @@
 		/>
 	</span>
 	<br />
-	{#if Number.isInteger(quittingTime.hour()) && Number.isInteger(quittingTime.minute())}
+	{#if quittingTime.hour() - 12 < 0}
+		<span>총근로시간 확인 필요! 😡</span>
+	{/if}
+	{#if !error && Number.isInteger(quittingTime.hour()) && quittingTime.hour() - 12 > 0 && Number.isInteger(quittingTime.minute())}
 		<span>{quittingTime.hour() - 12}시 {quittingTime.minute().toString().padStart(2, '0')}분 퇴근! 👋</span>
 	{/if}
 </section>

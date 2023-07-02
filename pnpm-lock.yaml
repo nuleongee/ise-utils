@@ -8,9 +8,6 @@ dependencies:
   dayjs:
     specifier: ^1.11.8
     version: 1.11.8
-  svelty-picker:
-    specifier: ^3.5.0
-    version: 3.5.0
 
 devDependencies:
   '@fontsource/fira-mono':
@@ -2263,10 +2260,6 @@ packages:
     resolution: {integrity: sha512-pKj8fEBmqf6mq3/NfrB9SLtcJcUvjYSWyePlfCqN9gujLB25RitWK8PvFzlwim6hD/We35KbPlRteuA6rnPGcQ==}
     engines: {node: '>= 8'}
     dev: true
-
-  /svelty-picker@3.5.0:
-    resolution: {integrity: sha512-URxe82uJshx1I2mYdHU1/b2DysexvDZhgnfBP3p/aL5VBCa/PN0YltDR5VXQduW4EqxfQAJ9V/7w+adXqfx1rQ==}
-    dev: false
 
   /tailwindcss@3.3.2:
     resolution: {integrity: sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==}

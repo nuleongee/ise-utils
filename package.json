@@ -41,7 +41,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"dayjs": "^1.11.8",
-		"svelty-picker": "^3.5.0"
+		"dayjs": "^1.11.8"
 	}
 }

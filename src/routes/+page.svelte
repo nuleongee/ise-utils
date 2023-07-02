@@ -1,5 +1,6 @@
 <script>
 	import dayjs from 'dayjs';
+	import { base } from '$app/paths';
 
 	let workTimeAmount = '',
 		arrivalTime = '',
@@ -106,7 +107,7 @@
 	{#if !error && Number.isInteger(quittingTime.hour()) && quittingTime.hour() - 12 > 0 && Number.isInteger(quittingTime.minute())}
 		<span
 			>{quittingTime.hour() - 12}시 {quittingTime.minute().toString().padStart(2, '0')}분 퇴근!
-			<img src="/images/wave.gif" alt="wave" /></span
+			<img src="{base}/images/wave.gif" alt="wave" /></span
 		>
 	{/if}
 </section>

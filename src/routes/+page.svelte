@@ -104,7 +104,10 @@
 		<span>총근로시간 확인 필요! 😡</span>
 	{/if}
 	{#if !error && Number.isInteger(quittingTime.hour()) && quittingTime.hour() - 12 > 0 && Number.isInteger(quittingTime.minute())}
-		<span>{quittingTime.hour() - 12}시 {quittingTime.minute().toString().padStart(2, '0')}분 퇴근! 👋</span>
+		<span
+			>{quittingTime.hour() - 12}시 {quittingTime.minute().toString().padStart(2, '0')}분 퇴근!
+			<img src="/src/assets/images/wave.gif" alt="wave" /></span
+		>
 	{/if}
 </section>
 
@@ -138,15 +141,8 @@
 		margin-left: 2dvw;
 	}
 
-	h1 {
-		width: 100%;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	img {
+		width: clamp(1.1rem, 5dvw, 2rem);
+		height: clamp(1.1rem, 5dvw, 2rem);
 	}
 </style>

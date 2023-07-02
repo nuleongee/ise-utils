@@ -117,24 +117,25 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
-		font-size: clamp(0.94rem, 4.3dvw, 1.6rem);
+		font-size: clamp(0.9rem, 4.3dvw, 1.6rem);
 	}
 
 	section > span {
 		display: flex;
-		flex-flow: row nowrap;
+		flex-flow: row wrap;
 		justify-content: center;
 		width: 90dvw;
 	}
 
 	label {
 		text-align: right;
-		max-width: 40dvw;
+		max-width: 50dvw;
 		min-width: 18dvw;
-		padding-right: 2dvw;
+		white-space: nowrap;
 	}
 	input {
-		min-width: 18dvw;
+		max-width: 18dvw;
+		margin-left: 2dvw;
 	}
 
 	h1 {

@@ -51,7 +51,7 @@
 		let workTimeHours = parseInt(workTimeAmount.split(':')[0]);
 		let workTimeMinutes = parseInt(workTimeAmount.split(':')[1]);
 
-		if (workTimeHours < 37) {
+		if (workTimeHours < 27) {
 			error = 'workTimeError';
 		} else {
 			error = '';
@@ -63,7 +63,7 @@
 		let baseTime = dayjs().startOf('week').add(5, 'day');
 
 		quittingTime = baseTime
-			.add(51 - workTimeHours, 'hour')
+			.add(41 - workTimeHours, 'hour')
 			.subtract(workTimeMinutes, 'minute')
 			.add(arrivalTimeHours, 'hour')
 			.add(arrivalTimeMinutes, 'minute');

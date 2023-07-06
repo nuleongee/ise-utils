@@ -21,7 +21,7 @@
 	}
 
 	$: if (workTimeAmount.length === 5) {
-		let hours = Math.max(Math.min(parseInt(workTimeAmount.split(':')[0]), 49), 37);
+		let hours = Math.max(Math.min(parseInt(workTimeAmount.split(':')[0]), 39), 27);
 		let minutes = Math.min(Number(workTimeAmount.split(':')[1]), 59);
 
 		workTimeAmount = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');

@@ -3,22 +3,20 @@
 	import dayjs from 'dayjs';
 	import clsx from 'clsx';
 	import Device from 'svelte-device-info';
-	import { onMount } from 'svelte';
 
 	let workTimeAmount = '',
 		arrivalTime = '',
 		quittingTime,
 		error,
 		isGuideShow = false,
-		isMobile;
-
-	onMount(() => {
-		isMobile = Device.isMobile;
-	});
+		isMobile,
+		orientation;
 
 	function guideShow() {
 		isMobile = Device.isMobile;
 		isGuideShow = true;
+		orientation = window.orientation;
+		console.log(orientation);
 	}
 	function guideHidden() {
 		isGuideShow = false;
@@ -102,17 +100,17 @@
 </svelte:head>
 
 <section>
-	<span
-		class="guide relative -mt-10 mb-10 cursor-pointer text-gray-500 w-fit"
-		on:mouseenter={guideShow}
-		on:mouseleave={guideHidden}
+	<span class="guide relative mb-5 cursor-pointer text-gray-500" on:mouseenter={guideShow} on:mouseleave={guideHidden}
 		>사용법 🤔
-		<img
-			class={clsx('guide-img absolute top-0 pointer-events-none', { hidden: !isGuideShow })}
-			src="{base}/images/{isMobile ? 'guide-m' : 'guide'}.webp"
-			alt="guide"
-		/>
 	</span>
+	<img
+		class={clsx('guide-img absolute top-20 pointer-events-none w-full', {
+			hidden: !isGuideShow,
+			'-top-20': orientation === 90 || orientation === 270,
+		})}
+		src="{base}/images/{isMobile ? 'guide-m' : 'guide'}.webp"
+		alt="guide"
+	/>
 	<span>
 		<label for="workTime">e-HR의 총근로시간 입력</label>
 		<input id="workTime" type="text" bind:value={workTimeAmount} on:input={handleWorkTimeInput} placeholder="00:00" />
@@ -141,8 +139,6 @@
 </section>
 
 <style lang="postcss">
-	:global(html) {
-	}
 	section {
 		display: flex;
 		flex-direction: column;
@@ -150,6 +146,7 @@
 		align-items: center;
 		flex: 0.6;
 		font-size: clamp(0.9rem, 4.3dvw, 1.6rem);
+		position: relative;
 	}
 
 	section > span {
@@ -173,5 +170,11 @@
 	img.wave {
 		width: clamp(1.1rem, 5dvw, 2rem);
 		height: clamp(1.1rem, 5dvw, 2rem);
+	}
+
+	.guide {
+		display: inline-block;
+		width: auto;
+		text-align: center;
 	}
 </style>

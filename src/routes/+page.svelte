@@ -16,7 +16,6 @@
 		isMobile = Device.isMobile;
 		isGuideShow = true;
 		orientation = window.orientation;
-		console.log(orientation);
 	}
 	function guideHidden() {
 		isGuideShow = false;
@@ -104,8 +103,9 @@
 		>사용법 🤔
 	</span>
 	<img
-		class={clsx('guide-img absolute top-20 pointer-events-none w-full', {
+		class={clsx('guide-img absolute  pointer-events-none w-full', {
 			hidden: !isGuideShow,
+			'top-20': orientation === 0 || orientation === 180,
 			'-top-20': orientation === 90 || orientation === 270,
 		})}
 		src="{base}/images/{isMobile ? 'guide-m' : 'guide'}.webp"
@@ -176,5 +176,7 @@
 		display: inline-block;
 		width: auto;
 		text-align: center;
+	}
+	.guide-img {
 	}
 </style>

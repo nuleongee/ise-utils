@@ -5,9 +5,15 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  clsx:
+    specifier: ^1.2.1
+    version: 1.2.1
   dayjs:
     specifier: ^1.11.8
     version: 1.11.8
+  svelte-device-info:
+    specifier: ^1.0.0
+    version: 1.0.0
 
 devDependencies:
   '@fontsource/fira-mono':
@@ -863,6 +869,11 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /clsx@1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
@@ -2183,6 +2194,10 @@ packages:
       - stylus
       - sugarss
     dev: true
+
+  /svelte-device-info@1.0.0:
+    resolution: {integrity: sha512-KL5/fXmhKVtM4ogoj9xrFTPjoWtTy/a8VFA5kEooIJiL48+aETCG2/owMvrsoyBRybUkzVf4ixkj+DncpNWMqw==}
+    dev: false
 
   /svelte-eslint-parser@0.30.0(svelte@3.59.1):
     resolution: {integrity: sha512-H0Cn2TKr70DU9p/Gb04CfwtS7eK28MYumrHYPaDNkIFbfwGDLADpbERBn7u8G1Rcm2RMr2/mL6mq0J2e8iKFlA==}

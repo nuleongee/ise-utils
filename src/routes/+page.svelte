@@ -1,11 +1,28 @@
 <script>
-	import dayjs from 'dayjs';
 	import { base } from '$app/paths';
+	import dayjs from 'dayjs';
+	import clsx from 'clsx';
+	import Device from 'svelte-device-info';
+	import { onMount } from 'svelte';
 
 	let workTimeAmount = '',
 		arrivalTime = '',
 		quittingTime,
-		error;
+		error,
+		isGuideShow = false,
+		isMobile;
+
+	onMount(() => {
+		isMobile = Device.isMobile;
+	});
+
+	function guideShow() {
+		isMobile = Device.isMobile;
+		isGuideShow = true;
+	}
+	function guideHidden() {
+		isGuideShow = false;
+	}
 
 	function handleWorkTimeInput(event) {
 		let formattedTime = event.target.value;
@@ -85,6 +102,17 @@
 </svelte:head>
 
 <section>
+	<span
+		class="guide relative -mt-10 mb-10 cursor-pointer text-gray-500 w-fit"
+		on:mouseenter={guideShow}
+		on:mouseleave={guideHidden}
+		>사용법 🤔
+		<img
+			class={clsx('guide-img absolute top-0 pointer-events-none', { hidden: !isGuideShow })}
+			src="{base}/images/{isMobile ? 'guide-m' : 'guide'}.webp"
+			alt="guide"
+		/>
+	</span>
 	<span>
 		<label for="workTime">e-HR의 총근로시간 입력</label>
 		<input id="workTime" type="text" bind:value={workTimeAmount} on:input={handleWorkTimeInput} placeholder="00:00" />
@@ -107,7 +135,7 @@
 	{#if !error && Number.isInteger(quittingTime.hour()) && quittingTime.hour() - 12 > 0 && Number.isInteger(quittingTime.minute())}
 		<span
 			>오후 {quittingTime.hour() - 12}시 {quittingTime.minute().toString().padStart(2, '0')}분 퇴근!
-			<img src="{base}/images/wave.gif" alt="wave" /></span
+			<img class="wave" src="{base}/images/wave.gif" alt="wave" /></span
 		>
 	{/if}
 </section>
@@ -142,7 +170,7 @@
 		margin-left: 2dvw;
 	}
 
-	img {
+	img.wave {
 		width: clamp(1.1rem, 5dvw, 2rem);
 		height: clamp(1.1rem, 5dvw, 2rem);
 	}

@@ -41,6 +41,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"dayjs": "^1.11.8"
+		"clsx": "^1.2.1",
+		"dayjs": "^1.11.8",
+		"svelte-device-info": "^1.0.0"
 	}
 }

@@ -5,15 +5,15 @@
 		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		
-		<link href="./_app/immutable/assets/0.e83c2bfa.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/2.d403c831.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.dc1d63b2.js">
+		<link href="./_app/immutable/assets/0.58e899d1.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2.c904c904.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.b552a30f.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.939f53d8.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.17af012e.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/paths.7c44d8d7.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.c2fd13bf.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.47984497.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.107dd9e7.js"><title>🍳 금요일 퇴근시간 계산기</title><!-- HEAD_svelte-16mnpwj_START --><meta name="description" content="🍦아이스크림에듀 퇴근시간 계산기"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet"><!-- HEAD_svelte-16mnpwj_END -->
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.1fa90db9.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.7d4c4298.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.4f985aff.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.c66a5312.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.d41de7e5.js"><title>🍳 금요일 퇴근시간 계산기</title><!-- HEAD_svelte-16mnpwj_START --><meta name="description" content="🍦아이스크림에듀 퇴근시간 계산기"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet"><!-- HEAD_svelte-16mnpwj_END -->
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">
@@ -24,13 +24,14 @@
 
 	<main class="svelte-w23uu6">
 
-<section class="svelte-jz0nn5"><span class="guide relative -mt-10 mb-10 cursor-pointer text-gray-500 w-fit svelte-jz0nn5">사용법 🤔
-		<img class="guide-img absolute top-0 pointer-events-none hidden svelte-jz0nn5" src="/ise-utils/images/guide.webp" alt="guide"></span>
-	<span class="svelte-jz0nn5"><label for="workTime" class="svelte-jz0nn5">e-HR의 총근로시간 입력</label>
-		<input id="workTime" type="text" placeholder="00:00" class="svelte-jz0nn5" value=""></span>
+<section class="svelte-3s7q5p"><span class="guide relative mb-5 cursor-pointer text-gray-500 svelte-3s7q5p">사용법 🤔
+	</span>
+	<img class="guide-img absolute top-20 pointer-events-none w-full hidden svelte-3s7q5p" src="/ise-utils/images/guide.webp" alt="guide">
+	<span class="svelte-3s7q5p"><label for="workTime" class="svelte-3s7q5p">e-HR의 총근로시간 입력</label>
+		<input id="workTime" type="text" placeholder="00:00" class="svelte-3s7q5p" value=""></span>
 	<br>
-	<span class="svelte-jz0nn5"><label for="arrivalTime" class="svelte-jz0nn5">   e-HR의 출근기록 입력</label>
-		<input id="arrivalTime" type="text" placeholder="00:00" class="svelte-jz0nn5" value=""></span>
+	<span class="svelte-3s7q5p"><label for="arrivalTime" class="svelte-3s7q5p">   e-HR의 출근기록 입력</label>
+		<input id="arrivalTime" type="text" placeholder="00:00" class="svelte-3s7q5p" value=""></span>
 	<br>
 	
 	
@@ -43,7 +44,7 @@
 			
 			<script>
 				{
-					__sveltekit_1hwjtc = {
+					__sveltekit_c5foif = {
 						assets: "/ise-utils",
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
@@ -54,8 +55,8 @@
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.dc1d63b2.js"),
-						import("./_app/immutable/entry/app.c2fd13bf.js")
+						import("./_app/immutable/entry/start.b552a30f.js"),
+						import("./_app/immutable/entry/app.4f985aff.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2],

@@ -92,7 +92,7 @@
 
 <svelte:head>
 	<title>🍳 금요일 퇴근시간 계산기</title>
-	<meta property="og:image" content="%sveltekit.assets%/images/wave.gif" />
+	<meta property="og:image" content="{base}/images/wave.gif" />
 	<meta property="og:title" content="🍦아이스크림에듀 퇴근시간 계산기" />
 	<meta name="description" content="🍦아이스크림에듀 퇴근시간 계산기" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -115,7 +115,7 @@
 	/>
 	<span>
 		<label for="workTime">e-HR의 총근로시간 입력</label>
-		<input id="workTime" type="text" bind:value={workTimeAmount} on:input={handleWorkTimeInput} placeholder="00:00" />
+		<input id="workTime" type="text" bind:value={workTimeAmount} on:input={handleWorkTimeInput} placeholder="31:50" />
 	</span>
 	<br />
 	<span>
@@ -125,7 +125,7 @@
 			type="text"
 			bind:value={arrivalTime}
 			on:input={handleArrivalTimeInput}
-			placeholder="00:00"
+			placeholder="07:57"
 		/>
 	</span>
 	<br />

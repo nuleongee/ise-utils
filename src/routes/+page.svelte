@@ -7,6 +7,7 @@
 	let workTimeAmount = '',
 		arrivalTime = '',
 		quittingTime,
+		offDays = 0,
 		error,
 		isGuideShow = false,
 		isMobile,
@@ -19,6 +20,16 @@
 	}
 	function guideHidden() {
 		isGuideShow = false;
+	}
+
+	function handleOffDaysInput(event) {
+		offDays = event.target.value;
+
+		if (offDays > 4) {
+			offDays = 4;
+		} else if (offDays < 0) {
+			offDays = 0;
+		}
 	}
 
 	function handleWorkTimeInput(event) {
@@ -35,7 +46,7 @@
 	}
 
 	$: if (workTimeAmount.length === 5) {
-		let hours = Math.max(Math.min(parseInt(workTimeAmount.split(':')[0]), 39), 27);
+		let hours = Math.max(Math.min(parseInt(workTimeAmount.split(':')[0]), 39 - offDays * 8), 27 - offDays * 8);
 		let minutes = Math.min(Number(workTimeAmount.split(':')[1]), 59);
 
 		workTimeAmount = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
@@ -65,7 +76,7 @@
 		let workTimeHours = parseInt(workTimeAmount.split(':')[0]);
 		let workTimeMinutes = parseInt(workTimeAmount.split(':')[1]);
 
-		if (workTimeHours < 27) {
+		if (workTimeHours < 27 - offDays * 8) {
 			error = 'workTimeError';
 		} else {
 			error = '';
@@ -77,7 +88,7 @@
 		let baseTime = dayjs().startOf('week').add(5, 'day');
 
 		quittingTime = baseTime
-			.add(41 - workTimeHours, 'hour')
+			.add(41 - offDays * 8 - workTimeHours, 'hour')
 			.subtract(workTimeMinutes, 'minute')
 			.add(arrivalTimeHours, 'hour')
 			.add(arrivalTimeMinutes, 'minute');
@@ -113,6 +124,11 @@
 		src="{base}/images/{isMobile ? 'guide-m' : 'guide'}.webp"
 		alt="guide"
 	/>
+	<span>
+		<label for="arrivalTime">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이번주 쉬는 날</label>
+		<input id="offDays" type="number" bind:value={offDays} on:input={handleOffDaysInput} placeholder="0" />
+	</span>
+	<br />
 	<span>
 		<label for="workTime">e-HR의 총근로시간 입력</label>
 		<input id="workTime" type="text" bind:value={workTimeAmount} on:input={handleWorkTimeInput} placeholder="31:50" />

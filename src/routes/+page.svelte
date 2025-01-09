@@ -16,7 +16,7 @@
 		isGuideShow = false,
 		isMobile = false,
 		orientation = 0,
-		half = 1; // 0: 반차 X, 1: 오전 반차, 2: 오후 반차
+		half = 0; // 0: 반차 X, 1: 오전 반차, 2: 오후 반차
 
 	function guideShow() {
 		isMobile = Device.isMobile;
@@ -214,7 +214,6 @@
 	}
 	input, .buttonWrap {
 		max-width: 18dvw;
-		min-width: 6dvw;
 		margin-left: 2dvw;
 	}
 

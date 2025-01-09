@@ -125,7 +125,7 @@
 
 <svelte:head>
 	<title>🍳 금요일 퇴근시간 계산기</title>
-	<meta property="og:image" content="{base}/images/wave.gif" />
+	<meta property="og:image" content="{base}/images/bye.gif" />
 	<meta property="og:title" content="🍦아이스크림에듀 퇴근시간 계산기" />
 	<meta name="description" content="🍦아이스크림에듀 퇴근시간 계산기" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -183,7 +183,7 @@
 	{#if !error && Number.isInteger(quittingTime.hour()) && quittingTime.hour() > 10 && Number.isInteger(quittingTime.minute())}
 		<span>
 			{dayjs(quittingTime).format('a h시 m분 퇴근!')}
-			<img class="wave" src="{base}/images/wave.gif" alt="wave" />
+			<img class="bye" src="{base}/images/bye.gif" alt="bye" />
 		</span>
 	{/if}
 </section>
@@ -217,7 +217,7 @@
 		margin-left: 2dvw;
 	}
 
-	img.wave {
+	img.bye {
 		width: clamp(1.1rem, 5dvw, 2rem);
 		height: clamp(1.1rem, 5dvw, 2rem);
 	}

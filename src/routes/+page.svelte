@@ -170,7 +170,7 @@
 	</span>
 	<br />
 	<span>
-		<label for="arrivalTime">&nbsp;&nbsp;반차 사용</label>
+		<label>&nbsp;&nbsp;반차 사용</label>
 		<div class="buttonWrap">
 			<button class={`half ${half===1 && 'on'}`} on:click={() => handleHalfClick(1)}>오전</button>
 			<button class={`half ${half===2 && 'on'}`} on:click={() => handleHalfClick(2)}>오후</button>
@@ -234,6 +234,7 @@
 		display: flex;
 		flex-flow: row nowrap;
 		gap: 0.1rem;
+		min-width: 15dvw;
 	}
 	button.half {
 		background: #e0e0e0;

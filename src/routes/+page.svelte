@@ -49,7 +49,7 @@
 	function handleHalfClick(type) {
 		if (half === type) {
 			half = 0;
-		} else{
+		} else {
 			half = type;
 		}
 	}
@@ -144,12 +144,10 @@
 			'-top-20': orientation === 90 || orientation === 270,
 		})}
 		src="{base}/images/{isMobile ? 'guide-m' : 'guide'}.webp"
-		alt="guide"
-	/>
+		alt="guide" />
 	<span>
 		<label for="arrivalTime"
-			>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이번주 쉬는 날</label
-		>
+			>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이번주 쉬는 날</label>
 		<input id="offDays" type="text" bind:value={offDays} on:input={handleOffDaysInput} placeholder="0.5 단위로 입력" />
 	</span>
 	<br />
@@ -165,15 +163,14 @@
 			type="text"
 			bind:value={arrivalTime}
 			on:input={handleArrivalTimeInput}
-			placeholder="07:57"
-		/>
+			placeholder="07:57" />
 	</span>
 	<br />
 	<span>
 		<label>&nbsp;&nbsp;반차 사용</label>
 		<div class="buttonWrap">
-			<button class={`half ${half===1 && 'on'}`} on:click={() => handleHalfClick(1)}>오전</button>
-			<button class={`half ${half===2 && 'on'}`} on:click={() => handleHalfClick(2)}>오후</button>
+			<button class={`half ${half === 1 && 'on'}`} on:click={() => handleHalfClick(1)}>오전</button>
+			<button class={`half ${half === 2 && 'on'}`} on:click={() => handleHalfClick(2)}>오후</button>
 		</div>
 	</span>
 	<br />
@@ -212,7 +209,8 @@
 		min-width: 18dvw;
 		white-space: nowrap;
 	}
-	input, .buttonWrap {
+	input,
+	.buttonWrap {
 		max-width: 18dvw;
 		margin-left: 2dvw;
 	}
@@ -243,7 +241,7 @@
 		&:hover {
 			background: #d0d0d0;
 		}
-		&:active{
+		&:active {
 			transform: translateY(1px);
 		}
 		&:first-child {
@@ -253,7 +251,7 @@
 			border-radius: 0 0.25rem 0.25rem 0;
 		}
 
-		&.on{
+		&.on {
 			background: #a15ff3;
 			color: white;
 		}

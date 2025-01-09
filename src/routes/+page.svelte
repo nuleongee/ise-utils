@@ -4,14 +4,19 @@
 	import clsx from 'clsx';
 	import Device from 'svelte-device-info';
 
+	import 'dayjs/locale/ko';
+	dayjs.locale('ko');
+
 	let workTimeAmount = '',
 		arrivalTime = '',
 		quittingTime,
 		offDays = 0,
-		error,
+		prefOffDays = 0,
+		error = '',
 		isGuideShow = false,
-		isMobile,
-		orientation;
+		isMobile = false,
+		orientation = 0,
+		half = 1; // 0: 반차 X, 1: 오전 반차, 2: 오후 반차
 
 	function guideShow() {
 		isMobile = Device.isMobile;
@@ -23,12 +28,29 @@
 	}
 
 	function handleOffDaysInput(event) {
-		offDays = event.target.value;
+		const regex = /^(0|0\.|0\.5|1|1\.|1\.5|2|2\.|2\.5|3|3\.|3\.5|4)$/;
+		if (regex.test(event.target.value)) {
+			offDays = event.target.value;
+		} else if (event.target.value === '') {
+			offDays = '';
+		} else {
+			offDays = prefOffDays;
+		}
 
 		if (offDays > 4) {
 			offDays = 4;
 		} else if (offDays < 0) {
 			offDays = 0;
+		}
+
+		prefOffDays = offDays;
+	}
+
+	function handleHalfClick(type) {
+		if (half === type) {
+			half = 0;
+		} else{
+			half = type;
 		}
 	}
 
@@ -66,17 +88,17 @@
 	}
 
 	$: if (arrivalTime.length === 5) {
-		let hours = Math.min(parseInt(arrivalTime.split(':')[0]), 11);
+		let hours = Math.min(parseInt(arrivalTime.split(':')[0]), half === 2 ? 16 : 11);
 		let minutes = Math.min(Number(arrivalTime.split(':')[1]), 59);
 
 		arrivalTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
 	}
 
 	$: {
-		let workTimeHours = parseInt(workTimeAmount.split(':')[0]);
+		let workTimeHours = parseInt(workTimeAmount.split(':')[0]) + (half !== 0 ? 4 : 0);
 		let workTimeMinutes = parseInt(workTimeAmount.split(':')[1]);
 
-		if (workTimeHours < 27 - offDays * 8) {
+		if (workTimeHours < (half !== 0 ? 31 : 27) - offDays * 8) {
 			error = 'workTimeError';
 		} else {
 			error = '';
@@ -88,12 +110,12 @@
 		let baseTime = dayjs().startOf('week').add(5, 'day');
 
 		quittingTime = baseTime
-			.add(41 - offDays * 8 - workTimeHours, 'hour')
+			.add(41 - offDays * 8 - workTimeHours - (half === 1 ? 1 : 0), 'hour')
 			.subtract(workTimeMinutes, 'minute')
 			.add(arrivalTimeHours, 'hour')
 			.add(arrivalTimeMinutes, 'minute');
 
-		let minQuittingTime = baseTime.add(16, 'hour');
+		let minQuittingTime = baseTime.add(half === 1 ? 0 : 16, 'hour');
 
 		if (quittingTime < minQuittingTime) {
 			quittingTime = minQuittingTime;
@@ -125,8 +147,10 @@
 		alt="guide"
 	/>
 	<span>
-		<label for="arrivalTime">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이번주 쉬는 날</label>
-		<input id="offDays" type="number" bind:value={offDays} on:input={handleOffDaysInput} placeholder="0" />
+		<label for="arrivalTime"
+			>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이번주 쉬는 날</label
+		>
+		<input id="offDays" type="text" bind:value={offDays} on:input={handleOffDaysInput} placeholder="0.5 단위로 입력" />
 	</span>
 	<br />
 	<span>
@@ -145,14 +169,22 @@
 		/>
 	</span>
 	<br />
-	{#if quittingTime.hour() - 12 < 0}
+	<span>
+		<label for="arrivalTime">&nbsp;&nbsp;반차 사용</label>
+		<div class="buttonWrap">
+			<button class={`half ${half===1 && 'on'}`} on:click={() => handleHalfClick(1)}>오전</button>
+			<button class={`half ${half===2 && 'on'}`} on:click={() => handleHalfClick(2)}>오후</button>
+		</div>
+	</span>
+	<br />
+	{#if quittingTime.hour() < 10}
 		<span>총근로시간 확인 필요! 😡</span>
 	{/if}
-	{#if !error && Number.isInteger(quittingTime.hour()) && quittingTime.hour() - 12 > 0 && Number.isInteger(quittingTime.minute())}
-		<span
-			>오후 {quittingTime.hour() - 12}시 {quittingTime.minute().toString().padStart(2, '0')}분 퇴근!
-			<img class="wave" src="{base}/images/wave.gif" alt="wave" /></span
-		>
+	{#if !error && Number.isInteger(quittingTime.hour()) && quittingTime.hour() > 10 && Number.isInteger(quittingTime.minute())}
+		<span>
+			{dayjs(quittingTime).format('a h시 m분 퇴근!')}
+			<img class="wave" src="{base}/images/wave.gif" alt="wave" />
+		</span>
 	{/if}
 </section>
 
@@ -180,8 +212,9 @@
 		min-width: 18dvw;
 		white-space: nowrap;
 	}
-	input {
+	input, .buttonWrap {
 		max-width: 18dvw;
+		min-width: 6dvw;
 		margin-left: 2dvw;
 	}
 
@@ -196,5 +229,33 @@
 		text-align: center;
 	}
 	.guide-img {
+	}
+
+	.buttonWrap {
+		display: flex;
+		flex-flow: row nowrap;
+		gap: 0.1rem;
+	}
+	button.half {
+		background: #e0e0e0;
+		padding: 0 0.25rem;
+
+		&:hover {
+			background: #d0d0d0;
+		}
+		&:active{
+			transform: translateY(1px);
+		}
+		&:first-child {
+			border-radius: 0.25rem 0 0 0.25rem;
+		}
+		&:last-child {
+			border-radius: 0 0.25rem 0.25rem 0;
+		}
+
+		&.on{
+			background: #a15ff3;
+			color: white;
+		}
 	}
 </style>

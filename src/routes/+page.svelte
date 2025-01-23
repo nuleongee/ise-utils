@@ -10,8 +10,8 @@
 	let workTimeAmount = '',
 		arrivalTime = '',
 		quittingTime,
-		offDays = 0,
-		prefOffDays = 0,
+		offDays = '',
+		prefOffDays = '',
 		error = '',
 		isGuideShow = false,
 		isMobile = false,
@@ -38,9 +38,9 @@
 			offDays = prefOffDays;
 		}
 
-		if (offDays > 4) {
+		if (Number(offDays) > 4) {
 			offDays = 4;
-		} else if (offDays < 0) {
+		} else if (Number(offDays) < 0) {
 			offDays = 0;
 		}
 
@@ -103,7 +103,7 @@
 		let workTimeHours = parseInt(workTimeAmount.split(':')[0]) + (half !== 0 ? 4 : 0);
 		let workTimeMinutes = parseInt(workTimeAmount.split(':')[1]);
 
-		if (workTimeHours < (half !== 0 ? 31 : 27) - offDays * 8) {
+		if (workTimeHours < (half !== 0 ? 31 : 27) - Number(offDays) * 8) {
 			error = 'workTimeError';
 		} else {
 			error = '';
@@ -115,7 +115,7 @@
 		let baseTime = dayjs().startOf('week').add(5, 'day');
 
 		quittingTime = baseTime
-			.add(41 - offDays * 8 - workTimeHours - (half === 1 ? 1 : 0), 'hour')
+			.add(41 - Number(offDays) * 8 - workTimeHours - (half === 1 ? 1 : 0), 'hour')
 			.subtract(workTimeMinutes, 'minute')
 			.add(arrivalTimeHours, 'hour')
 			.add(arrivalTimeMinutes, 'minute');
@@ -157,12 +157,12 @@
 	</span>
 	<br />
 	<span>
-		<label for="workTime">e-HR의 총근로시간 입력</label>
+		<label for="workTime"><span class="essential">*</span>e-HR의 총근로시간 입력</label>
 		<input id="workTime" type="text" bind:value={workTimeAmount} on:input={handleWorkTimeInput} placeholder="31:50" />
 	</span>
 	<br />
 	<span>
-		<label for="arrivalTime">&nbsp;&nbsp;&nbsp;e-HR의 출근기록 입력</label>
+		<label for="arrivalTime">&nbsp;&nbsp;&nbsp;<span class="essential">*</span>e-HR의 출근기록 입력</label>
 		<input
 			id="arrivalTime"
 			type="text"
@@ -278,5 +278,10 @@
 			min-width: 4rem;
 			border-radius: 0.25rem;
 		}
+	}
+
+	.essential {
+		color: #ff3e00;
+		font-size: clamp(0.5rem, 3dvw, 1.2rem);
 	}
 </style>

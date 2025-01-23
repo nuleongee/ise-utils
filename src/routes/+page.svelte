@@ -16,7 +16,8 @@
 		isGuideShow = false,
 		isMobile = false,
 		orientation = 0,
-		half = 0; // 0: 반차 X, 1: 오전 반차, 2: 오후 반차
+		half = 0,// 0: 반차 X, 1: 오전 반차, 2: 오후 반차
+		specialDay = false;
 
 	function guideShow() {
 		isMobile = Device.isMobile;
@@ -52,6 +53,10 @@
 		} else {
 			half = type;
 		}
+	}
+
+	function handleSpecialDayClick() {
+		specialDay = !specialDay;
 	}
 
 	function handleWorkTimeInput(event) {
@@ -117,7 +122,7 @@
 
 		let minQuittingTime = baseTime.add(half === 1 ? 0 : 16, 'hour');
 
-		if (quittingTime < minQuittingTime) {
+		if (!specialDay&& quittingTime < minQuittingTime) {
 			quittingTime = minQuittingTime;
 		}
 	}
@@ -174,10 +179,21 @@
 		</div>
 	</span>
 	<br />
+	<span>
+		<label>&nbsp;&nbsp;코어 타임 제거</label>
+		<div class="buttonWrap">
+			{#if specialDay}
+				<button class="half on coreTime" on:click={handleSpecialDayClick}>on</button>
+			{:else}
+				<button class="half coreTime" on:click={handleSpecialDayClick}>off</button>
+			{/if}
+		</div>
+	</span>
+	<br />
 	{#if quittingTime.hour() < 10}
 		<span>총근로시간 확인 필요! 😡</span>
 	{/if}
-	{#if !error && Number.isInteger(quittingTime.hour()) && quittingTime.hour() > 10 && Number.isInteger(quittingTime.minute())}
+	{#if !error && Number.isInteger(quittingTime.hour()) && quittingTime.hour() >= 10 && Number.isInteger(quittingTime.minute())}
 		<span>
 			{dayjs(quittingTime).format('a h시 m분 퇴근!')}
 			<img class="bye" src="{base}/images/bye.gif" alt="bye" />
@@ -213,6 +229,7 @@
 	.buttonWrap {
 		max-width: 18dvw;
 		margin-left: 2dvw;
+		padding-left: 0.5dvw;
 	}
 
 	img.bye {
@@ -254,6 +271,12 @@
 		&.on {
 			background: #a15ff3;
 			color: white;
+		}
+
+		&.coreTime{
+			width: 4dvw;
+			min-width: 4rem;
+			border-radius: 0.25rem;
 		}
 	}
 </style>

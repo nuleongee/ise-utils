@@ -6,14 +6,14 @@
 		<meta name="viewport" content="width=device-width" />
 		
 		<link href="./_app/immutable/assets/0.58e899d1.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/2.c609e4a2.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.d77b4a46.js">
+		<link href="./_app/immutable/assets/2.09ebcbe2.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.b761dee5.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.939f53d8.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.d20db4f5.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/paths.f9f39d37.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.e11b1f8d.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.1d8ce4ca.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.60a680d8.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.d2988ef5.js">
 		<link rel="modulepreload" href="./_app/immutable/nodes/0.c66a5312.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.158be6c3.js"><title>🍳 금요일 퇴근시간 계산기</title><!-- HEAD_svelte-1cic11j_START --><meta property="og:image" content="/ise-utils/images/bye.gif"><meta property="og:title" content="🍦아이스크림에듀 퇴근시간 계산기"><meta name="description" content="🍦아이스크림에듀 퇴근시간 계산기"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet"><!-- HEAD_svelte-1cic11j_END -->
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.60e07332.js"><title>🍳 금요일 퇴근시간 계산기</title><!-- HEAD_svelte-1cic11j_START --><meta property="og:image" content="/ise-utils/images/bye.gif"><meta property="og:title" content="🍦아이스크림에듀 퇴근시간 계산기"><meta name="description" content="🍦아이스크림에듀 퇴근시간 계산기"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet"><!-- HEAD_svelte-1cic11j_END -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-LV3LKYB1D1"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
@@ -39,24 +39,24 @@
 
 	<main class="svelte-w23uu6">
 
-<section class="svelte-6x5133"><span class="guide relative mb-5 cursor-pointer text-gray-500 svelte-6x5133">사용법 🤔
+<section class="svelte-150uiw6"><span class="guide relative mb-5 cursor-pointer text-gray-500 svelte-150uiw6">사용법 🤔
 	</span>
-	<img class="guide-img absolute  pointer-events-none w-full hidden top-20 svelte-6x5133" src="/ise-utils/images/guide.webp" alt="guide">
-	<span class="svelte-6x5133"><label for="arrivalTime" class="svelte-6x5133">             이번주 쉬는 날</label>
-		<input id="offDays" type="text" placeholder="0.5 단위로 입력" class="svelte-6x5133" value="0"></span>
+	<img class="guide-img absolute  pointer-events-none w-full hidden top-20 svelte-150uiw6" src="/ise-utils/images/guide.webp" alt="guide">
+	<span class="svelte-150uiw6"><label for="arrivalTime" class="svelte-150uiw6">             이번주 쉬는 날</label>
+		<input id="offDays" type="text" placeholder="0.5 단위로 입력" class="svelte-150uiw6" value=""></span>
 	<br>
-	<span class="svelte-6x5133"><label for="workTime" class="svelte-6x5133">e-HR의 총근로시간 입력</label>
-		<input id="workTime" type="text" placeholder="31:50" class="svelte-6x5133" value=""></span>
+	<span class="svelte-150uiw6"><label for="workTime" class="svelte-150uiw6"><span class="essential svelte-150uiw6">*</span>e-HR의 총근로시간 입력</label>
+		<input id="workTime" type="text" placeholder="31:50" class="svelte-150uiw6" value=""></span>
 	<br>
-	<span class="svelte-6x5133"><label for="arrivalTime" class="svelte-6x5133">   e-HR의 출근기록 입력</label>
-		<input id="arrivalTime" type="text" placeholder="07:57" class="svelte-6x5133" value=""></span>
+	<span class="svelte-150uiw6"><label for="arrivalTime" class="svelte-150uiw6">   <span class="essential svelte-150uiw6">*</span>e-HR의 출근기록 입력</label>
+		<input id="arrivalTime" type="text" placeholder="07:57" class="svelte-150uiw6" value=""></span>
 	<br>
-	<span class="svelte-6x5133"><label class="svelte-6x5133">  반차 사용</label>
-		<div class="buttonWrap svelte-6x5133"><button class="half false svelte-6x5133">오전</button>
-			<button class="half false svelte-6x5133">오후</button></div></span>
+	<span class="svelte-150uiw6"><label class="svelte-150uiw6">  반차 사용</label>
+		<div class="buttonWrap svelte-150uiw6"><button class="half false svelte-150uiw6">오전</button>
+			<button class="half false svelte-150uiw6">오후</button></div></span>
 	<br>
-	<span class="svelte-6x5133"><label class="svelte-6x5133">  코어 타임 제거</label>
-		<div class="buttonWrap svelte-6x5133"><button class="half coreTime svelte-6x5133">off</button></div></span>
+	<span class="svelte-150uiw6"><label class="svelte-150uiw6">  코어 타임 제거</label>
+		<div class="buttonWrap svelte-150uiw6"><button class="half coreTime svelte-150uiw6">off</button></div></span>
 	<br>
 	
 	
@@ -69,7 +69,7 @@
 			
 			<script>
 				{
-					__sveltekit_bypsnk = {
+					__sveltekit_u2kf5p = {
 						assets: "/ise-utils",
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
@@ -80,8 +80,8 @@
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.d77b4a46.js"),
-						import("./_app/immutable/entry/app.e11b1f8d.js")
+						import("./_app/immutable/entry/start.b761dee5.js"),
+						import("./_app/immutable/entry/app.d2988ef5.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2],

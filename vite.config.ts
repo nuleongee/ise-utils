@@ -1,9 +1,10 @@
-import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-	plugins: [sveltekit()],
+	plugins: [react(), tailwindcss()],
 	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
-	}
+		include: ['src/**/*.test.ts'],
+	},
 });

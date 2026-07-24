@@ -1,18 +1,6 @@
-.DS_Store
 node_modules
-/build
-/.svelte-kit
-/package
+dist
+dev-dist
+.DS_Store
+*.local
 .env
-.env.*
-!.env.example
-.vercel
-.output
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
-
-# IntelliJ project files
-.idea
-*.iml
-out
-gen

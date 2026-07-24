@@ -1,0 +1,20 @@
+@import '@fontsource/gamja-flower';
+@import 'tailwindcss';
+
+@theme {
+	--font-display: 'Gamja Flower', cursive, sans-serif;
+	--color-cream-50: #fffaf3;
+	--color-cream-100: #fff3e0;
+	--color-egg-300: #ffd66b;
+	--color-egg-400: #ffc93c;
+	--color-grape-400: #b47ef5;
+	--color-grape-500: #a15ff3;
+	--color-grape-600: #8b46e0;
+	--color-ink-700: #4a4442;
+}
+
+body {
+	font-family: var(--font-display);
+	color: var(--color-ink-700);
+	background-color: var(--color-cream-50);
+}

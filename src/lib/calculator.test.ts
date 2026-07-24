@@ -30,10 +30,10 @@ describe('calcQuittingTime', () => {
 		expect(r.quittingMinutes).toBe(19 * 60);
 	});
 
-	it('오전 반차는 최소퇴근 클램핑이 없다 (음수 결과 허용)', () => {
+	it('오전 반차의 최소퇴근은 00:00으로 클램핑한다', () => {
 		const r = calcQuittingTime({ workMinutes: 39 * 60, arrivalMinutes: 60, offDays: 0, half: 1, noCoreTime: false });
-		// 41 - (39+4) - 1 = -3h → -180 + 60 = -120분, 클램핑 없음
-		expect(r.quittingMinutes).toBe(-120);
+		// 41 - (39+4) - 1 = -3h → -180 + 60 = -120분 → 최소 00:00으로 클램핑
+		expect(r.quittingMinutes).toBe(0);
 	});
 
 	it('오후 반차: 근무시간 +4h만 반영', () => {

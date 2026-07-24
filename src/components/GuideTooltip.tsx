@@ -17,7 +17,7 @@ export default function GuideTooltip() {
 				사용법 🤔
 			</button>
 			{isOpen && (
-				<picture className="pointer-events-none absolute top-8 z-10 w-full max-w-2xl">
+				<picture className="pointer-events-none absolute left-1/2 top-8 z-10 w-[min(90dvw,64rem)] -translate-x-1/2">
 					<source media="(max-width: 640px)" srcSet="/images/guide-m.webp" />
 					<img src="/images/guide.webp" alt="사용법 안내" className="w-full" />
 				</picture>

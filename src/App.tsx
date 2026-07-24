@@ -48,29 +48,56 @@ export default function App() {
 	return (
 		<div className="flex min-h-dvh flex-col">
 			<a href="https://ehr.i-screamedu.co.kr" target="_blank" rel="noreferrer noopener">
-				<header className="mt-8 text-center text-[clamp(1.8rem,8dvw,3.2rem)]">🍳 금요일 퇴근시간 계산기</header>
+				<header className="mt-8 text-center text-[clamp(1.8rem,8dvw,3.2rem)]">
+					<span className="relative inline-block">
+						🍳 금요일 퇴근시간 계산기
+						<svg
+							aria-hidden
+							viewBox="0 0 200 10"
+							preserveAspectRatio="none"
+							className="absolute -bottom-2 left-[10%] h-[0.35em] w-[80%]">
+							<path
+								d="M3 7 Q 50 2 100 6 T 197 4"
+								fill="none"
+								stroke="var(--color-egg-400)"
+								strokeWidth="4"
+								strokeLinecap="round"
+							/>
+						</svg>
+					</span>
+				</header>
 			</a>
 
 			<main className="mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center gap-6 p-4 pb-[18dvh] text-[clamp(1rem,4.3dvw,1.4rem)]">
 				<GuideTooltip />
-				<section className="w-full rounded-2xl border border-ink-700/10 bg-white/70 p-6 shadow-sm sm:p-8">
-					<div className="grid grid-cols-[max-content_max-content] items-center justify-center gap-x-3 gap-y-4 sm:gap-x-4">
-						<LaborInputs
-							offDays={offDays}
-							workTime={workTime}
-							arrivalTime={arrivalTime}
-							onOffDaysChange={handleOffDaysChange}
-							onWorkTimeChange={handleWorkTimeChange}
-							onArrivalTimeChange={handleArrivalTimeChange}
-						/>
-						<span className="text-right">반차 사용</span>
-						<HalfDayToggle half={half} onToggle={handleHalfToggle} />
-						<span className="text-right">코어 타임 제거</span>
-						<CoreTimeToggle noCoreTime={noCoreTime} onToggle={() => setNoCoreTime(v => !v)} />
-					</div>
-				</section>
+				<div className="rise-in relative w-full">
+					<div
+						aria-hidden
+						className="absolute inset-0 rotate-[1.2deg] rounded-2xl border border-ink-700/10 bg-white/50"
+					/>
+					<div
+						aria-hidden
+						className="absolute -top-3 left-1/2 z-10 h-6 w-24 -translate-x-1/2 -rotate-3 rounded-sm bg-egg-300/60 shadow-sm"
+					/>
+					<section className="relative w-full rounded-2xl border border-ink-700/10 bg-white/80 p-6 shadow-sm sm:p-8">
+						<div className="grid grid-cols-[max-content_max-content] items-center justify-center gap-x-3 gap-y-4 sm:gap-x-4">
+							<LaborInputs
+								offDays={offDays}
+								workTime={workTime}
+								arrivalTime={arrivalTime}
+								onOffDaysChange={handleOffDaysChange}
+								onWorkTimeChange={handleWorkTimeChange}
+								onArrivalTimeChange={handleArrivalTimeChange}
+							/>
+							<span className="text-right">반차 사용</span>
+							<HalfDayToggle half={half} onToggle={handleHalfToggle} />
+							<span className="text-right">코어 타임 제거</span>
+							<CoreTimeToggle noCoreTime={noCoreTime} onToggle={() => setNoCoreTime(v => !v)} />
+						</div>
+					</section>
+				</div>
 				{showResultCard && (
-					<section className="w-full rounded-2xl border border-grape-400/30 bg-white/70 p-4 text-center shadow-sm sm:p-6">
+					<section className="rise-in w-full rounded-2xl border border-grape-400/30 bg-white/70 p-4 text-center shadow-sm sm:p-6">
 						<ResultCard result={result} />
 					</section>
 				)}

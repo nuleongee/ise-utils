@@ -17,4 +17,14 @@ body {
 	font-family: var(--font-display);
 	color: var(--color-ink-700);
 	background-color: var(--color-cream-50);
+	/* 모눈종이 + 폼 영역을 밝히는 은은한 빛 */
+	background-image:
+		radial-gradient(ellipse 70% 55% at 50% 38%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 70%),
+		linear-gradient(rgba(74, 68, 66, 0.055) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(74, 68, 66, 0.055) 1px, transparent 1px);
+	background-size:
+		auto,
+		28px 28px,
+		28px 28px;
+	background-attachment: fixed;
 }

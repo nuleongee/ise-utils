@@ -10,7 +10,8 @@ export default function GuideTooltip() {
 				className="cursor-pointer text-gray-500"
 				onPointerEnter={e => e.pointerType === 'mouse' && setIsOpen(true)}
 				onPointerLeave={e => e.pointerType === 'mouse' && setIsOpen(false)}
-				onPointerUp={e => e.pointerType !== 'mouse' && setIsOpen(open => !open)}>
+				onPointerUp={e => e.pointerType !== 'mouse' && setIsOpen(open => !open)}
+				onClick={e => e.detail === 0 && setIsOpen(open => !open)}>
 				사용법 🤔
 			</button>
 			{isOpen && (

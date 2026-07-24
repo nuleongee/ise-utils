@@ -6,14 +6,14 @@ interface Props {
 }
 
 function buttonClass(active: boolean): string {
-	return `px-3 py-1 transition-colors active:translate-y-px ${
-		active ? 'bg-grape-500 text-white' : 'bg-white hover:bg-ink-700/5'
+	return `rounded-full border px-4 py-0.5 transition-colors active:translate-y-px ${
+		active ? 'border-grape-500 bg-grape-500 text-white' : 'border-ink-700/20 bg-transparent hover:bg-ink-700/5'
 	}`;
 }
 
 export default function HalfDayToggle({ half, onToggle }: Props) {
 	return (
-		<div className="flex w-fit overflow-hidden rounded-lg border border-ink-700/15">
+		<div className="flex w-fit gap-2">
 			<button type="button" aria-pressed={half === 1} onClick={() => onToggle(1)} className={buttonClass(half === 1)}>
 				오전
 			</button>

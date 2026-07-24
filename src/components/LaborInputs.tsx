@@ -8,7 +8,7 @@ interface Props {
 }
 
 const inputClass =
-	'w-36 rounded-lg border border-ink-700/15 bg-white px-3 py-1 focus:outline-none focus:ring-2 focus:ring-grape-400';
+	'w-40 border-0 border-b border-ink-700/25 bg-transparent px-1 py-1 transition-colors focus:border-grape-500 focus:bg-grape-500/5 focus:outline-none';
 
 export default function LaborInputs({
 	offDays,
@@ -19,7 +19,7 @@ export default function LaborInputs({
 	onArrivalTimeChange,
 }: Props) {
 	return (
-		<div className="grid grid-cols-[auto_1fr] items-center gap-x-3 gap-y-3">
+		<>
 			<label htmlFor="offDays" className="text-right">
 				이번주 쉬는 날
 			</label>
@@ -56,6 +56,6 @@ export default function LaborInputs({
 				placeholder="07:57"
 				className={inputClass}
 			/>
-		</div>
+		</>
 	);
 }

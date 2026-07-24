@@ -53,16 +53,16 @@ export default function App() {
 
 			<main className="mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center gap-6 p-4 pb-[18dvh] text-[clamp(1rem,4.3dvw,1.4rem)]">
 				<GuideTooltip />
-				<section className="w-full rounded-2xl border border-ink-700/10 bg-white/70 p-4 shadow-sm sm:p-6">
-					<LaborInputs
-						offDays={offDays}
-						workTime={workTime}
-						arrivalTime={arrivalTime}
-						onOffDaysChange={handleOffDaysChange}
-						onWorkTimeChange={handleWorkTimeChange}
-						onArrivalTimeChange={handleArrivalTimeChange}
-					/>
-					<div className="mt-3 grid grid-cols-[auto_1fr] items-center gap-x-2 gap-y-3 sm:gap-x-3">
+				<section className="w-full rounded-2xl border border-ink-700/10 bg-white/70 p-6 shadow-sm sm:p-8">
+					<div className="grid grid-cols-[max-content_max-content] items-center justify-center gap-x-3 gap-y-4 sm:gap-x-4">
+						<LaborInputs
+							offDays={offDays}
+							workTime={workTime}
+							arrivalTime={arrivalTime}
+							onOffDaysChange={handleOffDaysChange}
+							onWorkTimeChange={handleWorkTimeChange}
+							onArrivalTimeChange={handleArrivalTimeChange}
+						/>
 						<span className="text-right">반차 사용</span>
 						<HalfDayToggle half={half} onToggle={handleHalfToggle} />
 						<span className="text-right">코어 타임 제거</span>

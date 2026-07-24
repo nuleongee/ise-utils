@@ -1,38 +1,21 @@
-# create-svelte
+# 🍳 ISE Utils — 금요일 퇴근시간 계산기
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+아이스크림에듀 e-HR 기준으로 금요일 퇴근 가능 시각을 계산하는 도구.
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
+## 개발
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+pnpm install
+pnpm dev      # 개발 서버
+pnpm test     # 단위 테스트 (vitest)
+pnpm build    # 타입체크 + 프로덕션 빌드
 ```
 
-## Developing
+## 스택
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+React 19 · Vite 7 · TypeScript · Tailwind CSS 4 · vite-plugin-pwa
 
-```bash
-npm run dev
+## 배포
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+`main` 브랜치 push 시 Vercel이 자동 배포한다.
+구 GitHub Pages URL(https://nuleongee.github.io/ise-utils/)은 리다이렉트 페이지만 유지.

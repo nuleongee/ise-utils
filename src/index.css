@@ -17,8 +17,4 @@ body {
 	font-family: var(--font-display);
 	color: var(--color-ink-700);
 	background-color: var(--color-cream-50);
-	background-image:
-		radial-gradient(circle at 20% 20%, rgba(255, 214, 107, 0.25) 0%, transparent 40%),
-		radial-gradient(circle at 80% 70%, rgba(180, 126, 245, 0.18) 0%, transparent 45%);
-	background-attachment: fixed;
 }

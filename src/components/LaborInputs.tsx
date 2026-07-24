@@ -8,7 +8,7 @@ interface Props {
 }
 
 const inputClass =
-	'w-36 rounded-lg border border-egg-300 bg-white px-3 py-1 focus:outline-none focus:ring-2 focus:ring-grape-400';
+	'w-36 rounded-lg border border-ink-700/15 bg-white px-3 py-1 focus:outline-none focus:ring-2 focus:ring-grape-400';
 
 export default function LaborInputs({
 	offDays,

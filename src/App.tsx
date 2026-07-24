@@ -53,7 +53,7 @@ export default function App() {
 
 			<main className="mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center gap-6 p-4 text-[clamp(1rem,4.3dvw,1.4rem)]">
 				<GuideTooltip />
-				<section className="w-full rounded-3xl border-2 border-egg-300 bg-white/80 p-4 shadow-[4px_4px_0_0_var(--color-egg-300)] backdrop-blur-sm sm:p-6">
+				<section className="w-full rounded-2xl border border-ink-700/10 bg-white/70 p-4 shadow-sm sm:p-6">
 					<LaborInputs
 						offDays={offDays}
 						workTime={workTime}
@@ -70,7 +70,7 @@ export default function App() {
 					</div>
 				</section>
 				{showResultCard && (
-					<section className="w-full rounded-3xl border-2 border-grape-400 bg-white/80 p-4 text-center shadow-[4px_4px_0_0_var(--color-grape-400)] sm:p-6">
+					<section className="w-full rounded-2xl border border-grape-400/30 bg-white/70 p-4 text-center shadow-sm sm:p-6">
 						<ResultCard result={result} />
 					</section>
 				)}

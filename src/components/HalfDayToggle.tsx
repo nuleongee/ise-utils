@@ -6,7 +6,9 @@ interface Props {
 }
 
 function buttonClass(active: boolean): string {
-	return `px-3 py-1 transition-colors ${active ? 'bg-grape-500 text-white' : 'bg-cream-100 hover:bg-egg-300'}`;
+	return `px-3 py-1 transition-colors active:translate-y-px ${
+		active ? 'bg-grape-500 text-white' : 'bg-cream-100 hover:bg-egg-300'
+	}`;
 }
 
 export default function HalfDayToggle({ half, onToggle }: Props) {

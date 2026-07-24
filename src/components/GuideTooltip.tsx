@@ -11,7 +11,9 @@ export default function GuideTooltip() {
 				onPointerEnter={e => e.pointerType === 'mouse' && setIsOpen(true)}
 				onPointerLeave={e => e.pointerType === 'mouse' && setIsOpen(false)}
 				onPointerUp={e => e.pointerType !== 'mouse' && setIsOpen(open => !open)}
-				onClick={e => e.detail === 0 && setIsOpen(open => !open)}>
+				onClick={e => e.detail === 0 && setIsOpen(open => !open)}
+				onKeyDown={e => e.key === 'Escape' && setIsOpen(false)}
+				onBlur={() => setIsOpen(false)}>
 				사용법 🤔
 			</button>
 			{isOpen && (

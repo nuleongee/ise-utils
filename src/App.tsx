@@ -51,7 +51,7 @@ export default function App() {
 				<header className="mt-8 text-center text-[clamp(1.8rem,8dvw,3.2rem)]">🍳 금요일 퇴근시간 계산기</header>
 			</a>
 
-			<main className="mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center gap-6 p-4 text-[clamp(1rem,4.3dvw,1.4rem)]">
+			<main className="mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center gap-6 p-4 pb-[18dvh] text-[clamp(1rem,4.3dvw,1.4rem)]">
 				<GuideTooltip />
 				<section className="w-full rounded-2xl border border-ink-700/10 bg-white/70 p-4 shadow-sm sm:p-6">
 					<LaborInputs

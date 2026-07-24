@@ -13,7 +13,7 @@ pnpm build    # 타입체크 + 프로덕션 빌드
 
 ## 스택
 
-React 19 · Vite 7 · TypeScript · Tailwind CSS 4 · vite-plugin-pwa
+React 19 · Vite 8 · TypeScript · Tailwind CSS 4 · vite-plugin-pwa
 
 ## 배포
 

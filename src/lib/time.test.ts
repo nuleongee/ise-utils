@@ -43,4 +43,7 @@ describe('formatKoreanTime', () => {
 	it('24시간을 넘으면 래핑한다', () => {
 		expect(formatKoreanTime(25 * 60 + 59)).toBe('오전 1시 59분');
 	});
+	it('음수 입력은 전일 시각으로 래핑한다', () => {
+		expect(formatKoreanTime(-121)).toBe('오후 9시 59분');
+	});
 });

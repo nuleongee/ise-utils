@@ -14,8 +14,9 @@ export function parseTimeToMinutes(value: string): number | null {
 }
 
 export function formatKoreanTime(totalMinutes: number): string {
-	const hour24 = Math.floor(totalMinutes / 60) % 24;
-	const minute = totalMinutes % 60;
+	const normalized = ((totalMinutes % 1440) + 1440) % 1440;
+	const hour24 = Math.floor(normalized / 60);
+	const minute = normalized % 60;
 	const meridiem = hour24 < 12 ? '오전' : '오후';
 	const hour12 = hour24 % 12 === 0 ? 12 : hour24 % 12;
 	return `${meridiem} ${hour12}시 ${minute}분`;

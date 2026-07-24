@@ -26,7 +26,7 @@ export function calcQuittingTime({ workMinutes, arrivalMinutes, offDays, half, n
 		(WEEKLY_HOURS - offDays * 8 - workHours - (half === 1 ? 1 : 0)) * 60 - workMins + arrivalMinutes;
 
 	const minQuittingMinutes = (half === 1 ? 0 : 16) * 60;
-	if (!noCoreTime && quittingMinutes < minQuittingMinutes) {
+	if (!noCoreTime && half !== 1 && quittingMinutes < minQuittingMinutes) {
 		quittingMinutes = minQuittingMinutes;
 	}
 

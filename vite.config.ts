@@ -10,6 +10,9 @@ export default defineConfig({
 		VitePWA({
 			registerType: 'autoUpdate',
 			includeAssets: ['favicon.ico', 'robots.txt', 'images/*.webp', 'images/*.gif'],
+			workbox: {
+				globPatterns: ['**/*.{js,css,html,ico,png,webp,gif,woff2}'],
+			},
 			manifest: {
 				name: '금요일 퇴근시간 계산기',
 				short_name: '퇴근계산기',

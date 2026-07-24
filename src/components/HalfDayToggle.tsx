@@ -13,7 +13,7 @@ function buttonClass(active: boolean): string {
 
 export default function HalfDayToggle({ half, onToggle }: Props) {
 	return (
-		<div className="flex overflow-hidden rounded-lg border border-egg-300">
+		<div className="flex w-fit overflow-hidden rounded-lg border border-egg-300">
 			<button type="button" aria-pressed={half === 1} onClick={() => onToggle(1)} className={buttonClass(half === 1)}>
 				오전
 			</button>
